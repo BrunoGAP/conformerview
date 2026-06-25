@@ -1,6 +1,6 @@
-# Conformer Analyzer
+# conformerview
 
-Conformer Analyzer is a beginner-friendly local Python application for
+conformerview is a beginner-friendly local Python application for
 comparing molecular conformers from Gaussian16 output files and simple XYZ
 geometries.
 
@@ -103,7 +103,7 @@ silently reorder a geometry.
 
 ## Scientific Assumptions
 
-Conformer Analyzer makes these assumptions explicit:
+conformerview makes these assumptions explicit:
 
 - Coordinates are Cartesian coordinates in angstroms.
 - RMSD is meaningful only for conformers with the same atom count and the same
