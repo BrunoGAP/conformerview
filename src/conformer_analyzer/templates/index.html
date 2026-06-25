@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Conformer Analyzer</title>
+    <link rel="stylesheet" href="/static/app.css">
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="shell hero-grid">
+        <div><p class="eyebrow">Conformer analysis</p>
+          <h1>Compare molecular conformers with confidence.</h1>
+          <p class="lede">Upload optimized Gaussian logs or simple XYZ geometries, calculate fitted RMSD matrices, and inspect the aligned structures interactively.</p></div>
+        <div class="molecule-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      </div>
+    </header>
+    <main class="shell main-grid">
+      <section class="card upload-card" aria-labelledby="upload-title">
+        <div class="section-heading"><div class="step">1</div><div>
+          <h2 id="upload-title">Load conformers</h2>
+          <p>Select at least two <code>.log</code> or <code>.xyz</code> files. Their order becomes C1, C2, and so on.</p>
+        </div></div>
+        {{ERROR_BLOCK}}
+        <form action="/analyze" method="post" enctype="multipart/form-data" id="analysis-form">
+          <label class="drop-zone" for="log-files" id="drop-zone">
+            <input id="log-files" name="log_files" type="file" accept=".log,.xyz" multiple required>
+            <span class="upload-icon">↑</span><strong>Choose conformer files</strong><span>or drag and drop them here</span>
+          </label>
+          <ol class="file-list" id="file-list" aria-live="polite"></ol>
+          <fieldset><legend>Viewer options</legend><div class="option-grid">
+            <label><span>Atoms used for fitting</span><select name="viewer_fit_atoms">
+              <option value="all">All atoms</option><option value="heavy">Heavy atoms only</option>
+            </select></label>
+            <label class="check-option"><input type="checkbox" name="show_hydrogens">
+              <span><strong>Show hydrogens initially</strong><small>They can also be toggled in the viewer.</small></span></label>
+          </div></fieldset>
+          <button class="primary-button" type="submit" id="analyze-button"><span>Run RMSD analysis</span><span aria-hidden="true">→</span></button>
+          <p class="working" id="working" hidden>Analyzing the uploaded conformers…</p>
+        </form>
+      </section>
+      {{RESULTS_BLOCK}}
+    </main>
+    <footer><div class="shell">Conformer Analyzer · Local processing · Uploaded files remain on this computer</div></footer>
+  </body>
+</html>

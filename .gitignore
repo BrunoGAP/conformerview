@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Packaging and build outputs
+build/
+dist/
+*.egg-info/
+
+# Test and type-check caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local environment files
+.env
+.env.*
+
+# Generated application outputs
+outputs/
+exports/
+generated/
+*.png.tmp
+
+# Large Gaussian scratch/checkpoint files
+*.chk
+*.fchk
+*.rwf
+*.int
+*.d2e
+*.scr
+
+# Keep source Gaussian logs and reference examples under version control unless
+# the project owner decides otherwise.

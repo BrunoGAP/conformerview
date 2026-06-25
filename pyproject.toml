@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "conformer-analyzer"
+version = "0.1.0"
+description = "Local tools for comparing molecular conformers from Gaussian16 logs and XYZ files."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "matplotlib>=3.8",
+    "numpy>=1.26",
+    "py3Dmol>=2.5.5,<3",
+]
+
+[project.scripts]
+conformer-analyzer = "conformer_analyzer.interface:main"
+conformer-analyzer-gui = "conformer_analyzer.web_interface:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+conformer_analyzer = ["templates/*.html", "static/*.css", "static/*.js"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
